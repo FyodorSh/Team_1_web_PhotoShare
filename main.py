@@ -40,5 +40,5 @@ app.include_router(rates.router, prefix='/api')
 app.include_router(search.router, prefix='/api')
 app.include_router(comments.router, prefix='/api')
 
-if __name__ == '__main__':
-    uvicorn.run(app="main:app", reload=True)
+#if __name__ == '__main__':
+#    uvicorn.run(app="main:app", reload=True)
