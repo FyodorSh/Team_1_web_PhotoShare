@@ -47,8 +47,6 @@ async def get_post(post_id: int, db: Session) -> Post:
     :rtype: Post
     """
     post = db.query(Post).filter(Post.id == post_id).first()
-    if post is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")    
     return post
 
 
