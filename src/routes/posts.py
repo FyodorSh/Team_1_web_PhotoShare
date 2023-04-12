@@ -38,9 +38,11 @@ async def create_post(body: PostCreate = Depends(), img_file: UploadFile = File(
     return post
 
 
-@router.get('/p/{post_id}', response_model=PostModel, status_code=status.HTTP_200_OK)
+@router.get('/p/{post_id}', response_model=PostModel | None, status_code=status.HTTP_200_OK)
 async def get_post(post_id: int, db: Session = Depends(get_db)):
     post = await posts_repository.get_post(post_id, db)
+    if post is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")    
     return post
 
 
